@@ -1,0 +1,16 @@
+.test{
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+.test::before{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    content: "";
+    top:0;
+    left: 0;
+    background: pink;
+    z-index: -1;
+    transform: skew(45deg);
+}

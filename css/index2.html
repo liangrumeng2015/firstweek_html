@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>css【下】</title>
+    <style>
+        /*BFC
+            BFC布局规则：
+                （1）每个元素的margin box的左边，与包含块border box的左边相接触（对于从左往右的格式化，否则相反）。即使存在浮动页如此
+                （2）BFC的区域不会与float box重叠
+        */
+        body{
+            width: 300px;
+            position: relative;
+        }
+        .aside{
+            width: 100px;
+            height: 150px;
+            float: left;
+            background: #f66;
+        }
+        .main{
+            height: 200px;
+            background: #fcc;
+            overflow: hidden;   /*会生成BFC，不会重叠，每个BFC直接的东西是相互独立的*/
+        }
+        /*end*/
+
+        /*清除内部浮动start*/
+        .par{
+            border:5px solid #fcc;
+            width: 300px;
+            overflow: hidden;   /*添加此，高度就不会丢失了。如果生成BFC，浮动元素也跟着计算*/
+        }
+        .child{
+            border: 5px solid #f66;
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        /*end*/
+
+        /*防止垂直margin重叠  start
+            方法1：给p加个父级添加  overflow:hidden,生成BFC;
+            方法2：内部添加  float:left; display:inline-block;
+        */
+        p{
+            color:#f55;
+            background: #fcc;
+            width: 200px;
+            line-height: 100px;
+            text-align: center;
+            margin: 100px;
+            /*float: left;     
+            display: inline-block; */  /*解决margin垂直重叠问题*/
+        }
+        .wrap{
+            overflow: hidden;    /*BFC*/
+        }
+
+        /*end*/
+    </style>
+</head>
+<body>  
+<!--
+#(1)reset.css重置、normalize.css修复  、Neat.css融合
+
+# 移动端一定要添加：
+html{
+    box-sizing:border-box;
+}
+*,*:before,*:after{
+    box-sizing:inherit;
+}
+
+#(2)iconFont  或 svg
+http://cssicon.space/#/  纯css的很快
+
+#(3)css Hint/css Lint 在线的http://csslint.net/#results
+    》正确的使用显示属性，如：display:inline;不要和width、height、float、margin、padding。
+                        display:block;不要和float同时使用等
+    》避免使用id作为样式选择器
+    》标题元素只使用一次
+    》使用width:100%时要小心
+    》属性值为0时，不要加单位
+#(4)BFC、IFC、GFC、FFC
+    哪些元素会生成BFC？
+        》根元素、
+        》float属性不为none、
+        》position为absolute或fixed、
+        》display为inline-block、table-cell、table-caption、flex、inline-flex
+        》overflew不为visible
+    BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。  display成box元素 
+    IFC“内联格式化上下文”   行内元素
+    FFC“自适应格式化上下文”  flex
+    GFC“网格布局格式化上下文”  gride-layout
+    
+
+#（5）为什么要分层？
+    SMACSS、BEM、SUIT、ACSS、ITCSS、   
+
+    ACSS原子  .m-20{margin-right:10px;} 
+
+    总结：
+        传统双飞翼布局、BFC、IFC、GFC、FFC
+        CSS Hint
+-->
+
+
+
+
+<!-- BFC -->
+<div class="aside"></div>
+<div class="main"></div>
+
+<br><br>
+
+<!-- 清除内部浮动 -->
+<div class="par">
+    <div class="child"></div>
+    <div class="child"></div>
+</div>
+
+<br><br>
+
+ <!-- 防止垂直margin重叠 -->
+
+    <p>hello</p>
+<div class="wrap">
+    <p>hello</p>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

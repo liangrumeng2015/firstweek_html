@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>闭包补充</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function foo(){
+			console.log(this);
+		}
+		foo();
+		foo.prototype.constructor();
+		var bar = {
+			baz:foo
+		};
+		bar.baz();   //bar
+		(bar.baz)();  //bar
+
+		(bar.baz = bar.baz)();    //window
+		(bar.baz,bar.baz)();   //window
+		(false || bar.baz)();  //window
+
+		var expression = (function(){console.log(this);})
+		var t = expression();
+		console.log(t);
+	</script>
+
+</body>
+</html>

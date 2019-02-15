@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>flex布局，弹性盒模型</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        -webkit-box-sizing:border-box;
+    }
+    .wrap{
+        display: flex;
+    }
+        .left{
+            background: orange;
+            flex: 1;
+        }
+        .right{
+            background: pink;
+            flex: 1;
+        }
+        .middle{
+            background: green;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    
+     <div class="wrap">
+         <div class="left">左<p>我是新航</p></div>
+         <div class="right">右</div>
+         <div class="middle">中</div>
+     </div>
+
+
+
+</body>
+</html>

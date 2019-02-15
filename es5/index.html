@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        
+        //立即函数：匿名的
+        //  undefined 声明了没有赋值，   is not defined  没有定义
+        // var a = 25;
+        // (function(){
+        //  alert(a);   //undefined
+        //  var a = 30;
+        // })();
+
+
+        //函数提升：
+        // (function(){
+        //     var a = 20;
+        //     function b(){}
+        //     console.log(a);
+        // })();
+
+        // (function (){
+        //     var a = 20;
+        //     var b = c = a;  //var b = 20; c = a;
+        //     // var b,c=a;
+        // })();
+        // alert(c);    //20 c这时是全局变量   变成逗号，就会报错，c就是局部变量了
+
+
+        // function test(){
+        //     this.a = 20;
+        // }
+        // test.prototype.a = 30;
+        // var q = new test;
+        // console.log(q.a);  //20 函数内的优先级高于原型链的优先级
+
+        //bind
+        var user = {
+            age:20,
+            init:function(){
+                console.log(this.age);
+            }
+        }
+        var data = {age:40};
+        var s = user.init.bind(data);    //bind改变this的指向
+        s();   
+
+
+        //this的指向:谁调用this，this就指向谁
+        // this.a = 20;
+        // var p = {
+        //  a:30,
+        //  test:function(){
+        //      // console.log(this.a);
+        //      function s(){
+        //          //2. this.a = 60;
+        //          console.log(this.a);
+        //      }
+        //      s();  
+        //      //4. return s;
+        //  }
+        // };
+        // //1. p.test();   //30
+
+        // //2. var s = p.test;
+        // // s();  //当前的s指向window， 20
+
+        // //3. (p.test())();   //60
+
+        // //4. var m = p.test();
+        // // m(); //20
+
+        // p.test();   //20
+
+
+        //闭包：拿到你本来不该拿到的东西
+        // function f1(){
+        //     var N = 0;
+        //     function f2(){
+        //         N += 1;
+        //         console.log(N);
+        //     }
+        //     return f2;
+        // }
+        // var result = f1();
+        // result();
+        // result();
+        // result();
+        // result = null;  //将其置为null，释放内存，防止内存泄漏
+
+        //闭包
+        // function Product(){
+        //     var name;
+        //     this.setName = function(value){
+        //         name = value;
+        //     }
+        // }
+        // var s = new Product();
+        // s.setName('hello');
+
+        //原型链
+        // var Car = function(color){
+        //     //constructor  == Car 构造函数和初始化这个类是一个东西
+        //     this.color = color;
+        //     // this.sail = function(){  //每继承一次都会被实例化一次
+        //     //     console.log(this.color+"色卖13W");
+        //     // }
+        // }
+        // Car.prototype.sail = function(){
+        //     console.log(this.color+"色卖13W");
+        // };
+        // var BWM = function(color){
+        //     Car.call(this,color);
+        // }
+        // // BWM.prototype = Car.prototype;
+        // // BWM.prototype.test = function(){
+
+        // // }
+
+        // var __pro = Object.create(Car.prototype);
+        // __pro.constructor = BWM;
+        // BWM.prototype= __pro;
+        // BWM.prototype = new Car();
+        // var m = new BWM('pink');
+        // console.log(m);
+        // var s = new Car('red');
+        // console.log(s);
+        // console.log(s.sail());
+        
+        // Class s{
+        //     constructor{
+        //         this.a = 20;
+        //     }
+        //     public function sail(){}
+        // }
+
+        //按值传递、按引用传递
+        // var a = 1;
+        // var b = a;
+        // // b = 2;
+        // b.name = 20;
+        // console.log(b);
+
+        //按引用传递：
+        //1.拿到父类原型链上的方法
+        //2.不能让构造函数执行2次
+        //3.引用的原型链不能是按值引用
+        //4.修正子类的constructor
+
+
+
+        // function test(m){
+        //     m.v = 20;
+        // }
+        // var m = {age:30};
+        // test(m);
+        // alert(m.v);    //20  按引用传递
+
+
+
+
+        //题目
+        // this.a = 20;
+        // var test = {
+        //  a:40,
+        //  init:()=>{
+        //      console.log(this.a);
+        //      function go(){
+        //          this.a = 60;
+        //          console.log(this.a);
+        //      }
+        //      go.prototype.a = 50;
+        //  }
+        // };
+        // var p = test.init;  //40
+        // p();    //20
+        // new(test.init())();//20
+
+
+
+        /*
+            (1)立即执行函数
+            (2)闭包  
+                2.1内部函数可以访问外部函数的变量，把函数返回出去；
+                2.2闭包可以保护内部的变量；
+                2.3闭包会造成内存泄漏，可以将其赋值null，来释放内存
+            (3)原型链  
+                3.1构造函数里的属性的优先级比原型链的高；
+                3.2在实现面向对象编程的时候，js里面没有类的概念，但是可以用函数来替代
+                3.3construtor实际就是对应的那个函数
+                3.4prototype按引用传递的 Object.create原型链的副本
+            (4)数值、字符串、布尔类型，都是按值传递，其他的都是按引用传递。 对象、数组按引用传递
+            (5)改变this的方法：call、apply、bind
+            (6)函数提升、变量提升
+                6.1函数提升的级别要比变量高
+            (7)jq内部有很多经典的写法、模块化编程的概念、闭包
+        */
+
+
+
+    </script>
+    <!-- 
+        异步队列：事件绑定、延时、ajax
+        同步队列：
+        先执行同步，在执行异步
+     -->
+
+    <ul>
+        <li>111</li>
+        <li>2222</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+
+    <button id="test"></button>
+    <script type="text/javascript">
+        
+        var list_li = document.getElementsByTagName("li");
+        // for(let i = 0;i < list_li.length;i++){   //方法2：es6 改成块级作用域
+        for(var i = 0; i < list_li.length;i++){ 
+            // (function(i){
+                list_li[i].onclick = function (){
+                    // console.log(i);
+                    console.log(this.innerHTML);   //方法3： 改变innerHTML
+                }
+            // })(i);   //方法1：使用闭包解决方法
+        }
+
+        // $('#test').click(function(arguments){
+        //     console.log(1);
+        // })
+        // setTimeout(function(){
+        //     console.log(2);
+        // },0);
+        // while(true){
+        //     console.log(3);
+        // }
+
+
+
+        //module 模块化
+        // var module = (function(){
+        //     var N = 5;
+        //     function print(){
+        //         console.log(N);
+        //     }
+        //     function add(x){
+        //         var q = x + N;
+        //         console.log(q);
+        //     }
+        //     return {
+        //         des:"这里是一个模块",
+        //         add:add
+        //     }
+        // })();
+        // module.add(3);
+
+        var index = {
+            data:{
+                age:20
+            },
+            methods:{
+                function aa(){
+
+                }
+            }
+        };
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		//作用域、闭包
+		// Uncaught ReferenceError: i is not defined
+		// undefined
+		//js是函数级别作用域，在内部的变量，内部都能访问，外部不能访问内部的，内部能访问外部的。
+		//内部环境可以通过作用域链访问到外部环境，但是外部环境不能访问内部环境中的任何变量和函数。
+
+
+		function test(){
+			if(false){
+
+			}else{
+
+			}
+		}
+
+
+		//经典面试题
+		var j = 100;
+		~(function(){
+			console.log(j);
+		})();       //100    ~意思是将(function(){console.log(j)})转换成一个表达式来输出。
+
+
+		var x = 666;
+		function test01(){
+			console.log(x);
+			var x;
+		}
+		test01();
+
+		//闭包：拿到本不该属于它的东西; 闭包容易造成内存泄漏； 
+		//想把k返回出去
+		function test02(){
+			var k = 1000;
+			return function(){
+				return k;
+			}
+		}
+		var t = test02()();
+		console.log(t);   //这时就将k返回出来了（使用了闭包）
+	</script>
+</body>
+</html>

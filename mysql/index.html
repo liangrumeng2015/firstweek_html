@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MySQL数据库客户端基础</title>
+</head>
+<body>
+工具：phpAdmin
+     workbench
+
+
+下载MySQL
+->官网  www.mysql.com
+->下载 MySQL Workbench （MySQL可视化界面）
+
+字符集：utf8 -default collation
+db_test 数据库 db_开头
+t_news  数据表 t_开头
+
+小黑窗：操作数据库命令  [注意后面的分号，别忘了]
+    mysql -uroot -p     //u表示用户 user   -p表示要使用密码登录
+    show databases;      //看有哪些库
+    use db_test;        //进入这个db_test数据库
+
+tabels数据表
+views视图
+Functions自己定义的一些函数
+
+创建数据表：t_student   PK主键、NN非空、AI自动增长、
+
+    CREATE TABLE `db_test`.`t_student`(
+    `id` INT NOT NULL AUTO_INCREMENT COMMENT,
+    `name` VERCHAR(40) NOT NULL COMMENT,
+    `birthdate` DATE NOT NULL COMMENT,
+    `gender` CHAR(1) NOT NULL COMMENT,
+    `class_id` INT NOT NULL COMMENT,
+    );
+
+插入insert
+删除delete
+修改update
+查  select
+
+SELECT * FROM db_test.t_student
+WHERE gender='M';
+
+//1.count() 计数  #查询表里面有几个男生
+SELECT count(*) FROM db_test.t_student
+WHERE gender='M';
+
+//2.min() 求最小值  #查询年龄最大的     t_stuent.*  数据库的表内容都显示出来
+SELECT min(birthdate),   t_stuent.* FROM db_test.t_stuent
+
+//3.max() 求最大值  #查询年龄最小的
+SELECT max(birthdate),   t_stuent.* FROM db_test.t_stuent
+
+//4.sum() 求和
+//5.sqrt()  求平方根
+//6.rand()  生成随机数 0-1
+//7.now()   显示当前时间
+//8.concat()   拼字符串的函数sx
+SELECT concat(id,' ',name,) FROM t_student   # 添加空格  ' '
+
+更多内置函数可以查看手册
+
+--我是注释         //SQL的注释，是前面添加两个减号加空格，字体变成灰色
+
+【条件查询】：  
+#查询1991-01-01到1993-12-31期间出生的学生
+//方法1：
+SELECT * FROM  t_student
+WHERE birthdate >= '1991-01-01'
+AND birthdate <='1993-12-31'
+
+//方法2：
+SELECT * FROM  t_student
+WHERE birthdate BETWEEN '1991-01-01' AND '1993-12-31'
+
+#筛选性王的同学
+SELECT * FROM t_student
+WHERE name LIKE '王%'        %表示通配符
+
+#筛选名字里面带有’六‘的
+SELECT * FROM t_student
+WHERE name LIKE '%六%'    %在哪里就会占一个字符的
+
+%六  以’六‘结尾
+六%  以’六‘开头
+%六% 只要里面还有’六‘
+LIKE好用，但是不能滥用
+
+# 按照出生年月排序   ORDER BY （默认下顺序排序）    DESC逆序排序  ASC正序排序
+SELECT * FROM t_student
+ORDER BY birthay DESC    
+
+# 复杂查询语句：(两个表的查询) 记得设置关联条件
+SELECT * FROM t_student,t_class
+WHERE t_student.class_id=t_class.class_id
+
+# 显示部分字段
+SELECT t_student.id,t_student.name,t_class.class_name 
+FROM t_student,t_class
+WHERE t_student.class_id=t_class.class_id
+
+# 或者
+
+
+</body>
+</html>

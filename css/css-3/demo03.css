@@ -1,0 +1,11 @@
+/*内圆角，填充*/
+.test03{
+    margin:50px;
+    width: 300px;
+    height: 150px;
+    border-radius: .8rem;
+    background: pink;
+    outline: .8em solid green;       /**/
+    box-shadow: 0 0 0 .34em red;     /**/
+}
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>	
+	<script type="text/javascript">
+		// this.a = 20;
+		// var obj = {
+		// 	a:10,
+		// 	test:function(){
+		// 		console.log(this.a);
+		// 	}
+		// }
+		// obj.test();   //10 this指向obj
+
+
+		this.a = 20;
+		var obj = {
+			a:10,
+			test:function(){
+				console.log(this.a);   
+				return function(){
+					console.log(this.a);
+				}
+			}
+		};
+		(obj.test())();    //20  return里面的function指向了外面window。(obj.test())();相当于 var t = obj.test();    t();
+		
+
+		this.m = 1000;
+		function test01(){
+			this.m = 10;
+		}
+		test01.prototype.getA = function(){
+			return this.m;
+		}
+		var p = new test01();   
+		console.log(p.getA());     //10   p调用getA，getA又被挂载在test01的原型上，p又是test01声明出来的
+
+
+		this.e = 666;
+		function food(){
+			this.e = 888;
+		}
+		food.prototype.e = 100;
+		var q = new food();
+		console.log(q.e);      //构造函数里面的优先级比在原型链上高
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/*贝赛尔曲线*/
+.test04{
+	width: 200px;
+	height: 200px;
+	background: pink;
+	border-radius: 100px;
+	animation: bounce 5s;   /*执行自定义动画*/
+}
+
+@keyframes bounce{     /*自定义动画*/
+	to{
+		transform:translateY(400px);
+		cubic-bezier(.3,.7,.75,.3);    //贝塞尔曲线
+		/*animation-timing-function: ease-out;*/
+	}
+	/*70%{
+		transform: translateY(300px);
+	}
+	90%{
+		transform: translateY(300px);
+	}*/
+}
+/*	也可以下载使用animate.css包，里面实现的原理用的也是贝塞尔曲线
+		https://daneden.github.io/animate.css/?
+*/

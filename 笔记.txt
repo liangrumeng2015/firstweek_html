@@ -1,0 +1,44 @@
+
+第一周.JavaScript语言新发展【直播课】
+	精英前端工程师开学典礼
+	EcmaScript5核心技术  http://note.youdao.com/noteshare?id=c338be1ee60e3f077e103580a83f1276
+						
+第一周.JavaScript语言新发展【深度实践课】
+	1.JavaScript与QA工程师
+	2.JavaScript语言精粹1
+	3.JavaScript语言精髓2
+	4.TypeScript前世今生
+预读班：
+	你不知道的HTML       http://note.youdao.com/noteshare?id=e806032b7729a90651f279176b271711
+
+	你不知道的CSS        http://note.youdao.com/noteshare?id=e799dee142c0a196ec0c797e4dfc6236
+	CSS3构建3D的世界    
+	CSS高级实用技巧【上】
+	CSS高级使用技巧【下】
+	CSS与数学的巧妙运用
+
+	ES5核心技术        http://note.youdao.com/noteshare?id=55d55a66f8fad88b8c4a27f74944af6c
+	ES5.1新增语法【上】
+	ES5.1新增语法【下】
+
+	jQuery技术内幕
+
+	走进后端工程师的世界  http://note.youdao.com/noteshare?id=d6c7da6cc734d2755e929b3780d28069
+
+	常用后端语言介绍   http://note.youdao.com/noteshare?id=60f70f9d5db4e2baabca5dd1946297f9
+
+	Linux           http://note.youdao.com/noteshare?id=36b8a9814553eff4775afa4d460f6357
+
+	PHP与MySQL【上】   PHP与MySQL相关的 在demo里面。
+	PHP与MySQL【中】
+	PHP与MySQL【下】
+
+	ES6                 http://note.youdao.com/noteshare?id=908b5104f318f56a005be52b83606c6e
+	ES6在企业中的应用
+
+
+
+
+
+
+

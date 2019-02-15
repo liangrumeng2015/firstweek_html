@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        //如果new的话，s就能访问jq的原型链所有方法。
+        //如果不new，q也能访问jq的原型链上的所有方法。
+
+        /*
+          new jQuery
+          1.构造函数。
+          2.prototype的方法
+          new第一步返回 一个init函数，原型链上挂载了一个init的函数，没有主动的执行
+          原型链上的init没有调用，被搁置了
+          构造函数上的return生效。
+          jQuery.fn = jQuery.prototype
+        */
+
+        // (function(w,u){   // w  window、u   undefined  闭包可以保护变量，减少查找
+           
+        //     var jQuery = function(selector,context){
+        //         return new jQuery.fn.init(selector,context);
+        //     }  
+        //     jQuery.fn = jQuery.prototype = {
+        //         init:function(selector,context){
+        //             //s和q默默的做了一个new
+        //         }
+        //     }
+        //     //  jQuery.fn.init.prototype = jQuery.fn = jQuery.prototype;
+
+        //     // jQuery.fn.init.prototype = jQuery.fn;
+        // })(window);
+
+
+//jQuery.fn.extend
+//jQuery.extend
+
+
+// jQuery.extend({
+//     a:123
+// })
+// console.log($.a);
+
+
+// jQuery.fn.extend({
+//     s:function(){
+//         console.log('456');
+//     }
+// })
+// console.log($('').s());
+
+
+// var m = {
+//     a:function(){
+//         console.log('first');
+//     },
+//     b:function(){
+//         console.log('second');
+//     },
+//     c:function(){   
+//         console.log('third');
+//     }
+// }
+// m.a().b().c();    //报错
+
+//链式调用
+// var m = {
+//     a:function(){
+//         console.log('first');
+//         return this;   //this指的是m
+//     },
+//     b:function(){
+//         console.log('second');
+//         return this;  //this指的是m
+//     }, 
+//     c:function(){   
+//         console.log('third');
+//     }
+// }
+// m.a().b().c();    
+
+
+//事件代理,通过e.target往下找
+// $('body').append('<div class="test"></div>');
+
+// $('body').on('click','.test',function(){
+
+// });
+
+
+    $('.test').val();   //取值
+    $('.test').val('test');  //传参数取值
+
+    //函数的重载：
+    // function test(a,b,c,d,e,f,g,n,q){
+    //     var num = arguments.length;
+    //     switch(num){
+    //         case 1:
+    //             break;
+    //         case 2:
+    //             break;
+    //     }
+    // } 
+    //避免上面的繁琐，使用闭包实现缓存
+    // function addMethod(obj,name,f){
+    //     var old = obj[name];
+    //     obj[name] = function(){
+    //         if(f.length === arguments.length){
+    //             return f.apply(this,arguments);
+    //         }else{
+    //             return old.apply(this,arguments);
+    //         }
+    //     }
+    // }  
+    // var people = {
+    //     name:["张三","李四","王五","赵六"]
+    // }
+    // var find0 = function(){
+    //     return this.name;
+    // }
+    // addMethod(people,'find',find0);
+    // console.log(people.find());
+
+
+//old  undefined  obj.find  ->find0
+//old  find0      obj.find  ->find1
+//old  find1      obj.find  ->find2
+//封装，将传参和不传参写在一起,这就是函数的重载
+/*
+function addMethod(obj,name,f){
+        var old = obj[name];
+        obj[name] = function(){
+            if(f.length === arguments.length){
+                return f.apply(this,arguments);
+            }else{
+                return old.apply(this,arguments);
+            }
+        }
+    }  
+    var people = {
+        name:["张三","李四","王五","赵六"]
+    }
+    var find0 = function(){
+        return this.name;
+    }
+    var find1 = function(name){
+        var arr = this.name;
+        for(var i =0;i<=arr.length;i++){
+            if(arr[i] == name){
+                return arr[i]+'在'+i+'位';
+            }
+        }
+    }
+    var find2 = function(name,age){
+        console.log('啊哈哈');
+    }
+    addMethod(people,'find',find0);
+    addMethod(people,'find',find1);
+    addMethod(people,'find',find2);
+    console.log(people.find('李四',30));
+    // console.log(people.find());
+*/
+
+
+//实参、形参
+// function test(a,b){
+//     console.log('实参个数',arguments.length);
+//     console.log('形参个数',test.length);
+// }
+// test(1,2,3,4);
+
+
+//短路表达式和多重短路表达式
+    // var a;
+    // if(a){
+    //     foo = a;
+    // }else{
+    //     foo = b;
+    // }
+
+    var foo = a || b;  //短路表达式
+    var foog a && b && c;    //多重短路
+
+//
+core_version = "1.19.2";
+core_Trim = core_version.trim;
+
+trim:function(){
+    // return String.prototype.trim(data);
+    return core_Trim(data);
+}
+
+
+//钩子机制
+// $.isArray([]);
+// $.each("Boolean Number String Function Array Date RegExp Object Error".splite(" "),function(i,name){
+//     class2type["[object "+name+"]"] = name.toLowerCase();
+// });
+
+
+var data = {
+    index1:1,
+    index2:2
+}
+var s = "index1";
+data[s]&&function(){
+
+}
+
+
+//$.ready
+
+
+
+
+    </script>
+</body>
+</html>

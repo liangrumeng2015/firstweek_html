@@ -1,0 +1,73 @@
+*{
+	margin:0;
+	padding:0;
+}
+div{
+	height: auto;
+}
+.left{
+	float: left;
+	width: 300px;
+	background: pink;
+	margin-left: -100%;/*双飞翼*/
+}
+.right{
+	float: left;
+	width: 200px;
+	margin-left: -200px;/*双飞翼*/
+	background: orange;
+}
+.center{
+	width: 100%;
+	float:left;
+	background: yellow;
+}
+.center .inner{
+	margin-left: 300px;     /*双飞翼*/
+} 
+.left,.right,.center{      /*假的等高*/
+	padding-bottom: 9999px;
+	margin-bottom: -9999px; 
+}
+.container{
+	overflow: hidden;   /*假的等高*/
+}
+
+
+
+
+/*圣杯布局    margin+position*/
+/*
+*{
+	margin:0;
+	padding:0;
+}
+div{
+	height: auto;
+}
+.left{
+	float: left;
+	width: 300px;
+	background: pink;
+	margin-left: -100%;
+	position: relative;
+	left: -300px;    /*补全左边空出来的位置*/
+/*}
+.right{
+	float: left;
+	width: 200px;
+	margin-left: -200px;
+	background: orange;
+	position: relative;
+	right: -200px;*/    /*补全右边空出来的位置*/
+/*}
+.center{
+	width: 100%;
+	float:left;
+	background: yellow;
+}
+
+.container{
+	padding-left: 300px;
+	padding-right: 200px;
+}*/

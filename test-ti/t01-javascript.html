@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>预读班  javascript基础测试</title>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+	<script type="text/javascript">
+//1.(-5)请写出弹出值，并解释为什么。
+
+	// var a;
+	// if(false){
+	// 	a = 1;
+	// }
+	// alert(a);   //undefined
+	// //函数的优先级比变量高
+
+	// function test(){
+
+	// }
+	// var test = 5;
+	// alert(test);   //打印出得到函数体    function test(){}
+	// test = 2;
+
+	// var test = 5;
+	// function test(){}
+	// alert(test);
+	
+	// 	变量和函数提升，如下：
+	// 	function test(){}
+	// 	var test;
+	// 	test = 5;
+	// 	alert(test);     //5
+	
+	// //如果当函数名和变量名相同时，变量值为undefined时，变量会被忽略。
+
+
+	// function test(){
+	// 	console.log(1);
+	// }
+	// function init(){
+	// 	if(true){
+	// 		function test(){
+	// 			console.log(2);
+	// 		}
+	// 	}else{
+	// 		function test(){
+	// 			console.log(1);
+	// 		}
+	// 	}
+	// 	test();    //2  ,在函数的作用域内 
+	// }
+	// init();
+
+		// alert(a);        //#6       正确答案：function a(){ alert(10); }
+		// a();             //#10
+		// var a = 3;
+		// function a(){
+		// 	alert(10);
+		// }
+		// alert(a);      //#3
+		// a = 6; 
+		// a();         //#10     正确答案：  a is not a function
+
+		//           
+
+//2.(+8)写出如下输出值，并写出把注释掉的代码取消注释的值，并解释为什么？
+		// function test() {
+		// 	console.log(this);
+		// }
+		// var obj = {
+		// 	f:test
+		// };    //加不加逗号很重要
+		// // obj.f();   //this指向obj
+		// // (obj.f)();
+		// // (false || obj.f)();     //window   括号会计算的，括号里面是表达式.  括号里面会有返回值
+		// test();
+
+			// this.a = 20;
+			// var test = {
+			// 	a:40,
+			// 	init:()=>{
+			// 		console.log(this.a);     //  20   es6的箭头函数，会改变this的指向
+			// 	}
+			// };
+			// test.init();
+
+			// this.a = 20;
+			// var test = {
+			// 	a:40,
+			// 	init:function(){
+			// 		function PP(){
+			// 			// var a = 30;
+			// 			this.a = 30;
+			// 			function go(){
+			// 				console.log(this.a);
+			// 			}
+			// 			go();
+			// 		}
+			// 		PP();
+			// 	}
+			// }
+			// test.init();     // 20
+
+		// this.a = 20;
+		// var test = {
+		// 	a:40,
+		// 	init:()=>{
+		// 		console.log(this.a);     //       #3   20
+		// 		function go(){
+		// 			this.a = 60;
+		// 			console.log(this.a);  //      #3   60
+		// 		}
+		// 		go.prototype.a = 50;
+		// 		return go;
+		// 	}
+		// };
+
+		// new (test.init())();    //20  60 
+		/*
+		相当于这个：
+			var x = new(test.init());
+			x();
+		*/
+
+		// var p = test.init();          //#1
+		// p();                          //#2
+
+//3.(+12)请写出如下点击li的输出值，并用三种方法正确输出li李的数字
+		
+		// var list_li = document.getElementsByTagName('li');
+		// for(var i = 0;i < list_li.length;i++){
+		// 	list_li[i].onclick = function(){
+		// 		console.log(i);
+		// 	}
+		// }
+		//#方法1，将var变成let ，因为let是块级元素
+		
+			var list_li = document.getElementsByTagName('li');
+			for(let i = 0;i < list_li.length;i++){
+				list_li[i].onclick = function(){
+					console.log(this.innerHTML);
+				}
+			}
+		
+		//#方法2：使用闭包
+		
+			// var list_li = document.getElementsByTagName('li');
+			// for(var i = 0;i < list_li.length;i++){
+			// 	(function(i){
+			// 		list_li[i].onclick = function(){
+			// 			console.log(i);
+			// 		}
+			// 	})(i);
+			// }
+		
+		//#方法3：使用innerHTML
+		
+			// var list_li = document.getElementsByTagName('li');
+			// for(var i = 0;i < list_li.length;i++){
+			// 	list_li[i].onclick = function(){
+			// 		console.log(this.innerHTML);
+			// 	}
+			// }
+		
+
+//4.(-5)写出输出值，并解释为什么？     不会
+
+		// var a = {
+		// 	num:1
+		// };
+		// var b = a;
+		// b = {};
+		// b.num = 2;
+		// console.log(a);
+		// console.log(b);
+
+		// function test(m){
+		// 	m = {v:5}
+		// }
+		// var m = {k:30};  
+		// test(m);    
+		// alert(m.v);   //undefined
+
+
+//5.(-5)请写出代码执行结果，并解释为什么？    不会？
+		// function yideng(){
+		// 	console.log(1);
+		// }
+		// (function(){
+		// 	if(false){
+		// 		function yideng(){
+		// 			console.log(2);
+		// 		}
+		// 	}
+		// 	yideng();    // 
+		// })();
+
+//6.(+10)请用一句话算出0-100之间学生的学生等级，如90-100输出为1等生，80-90位2等生以此类推，不允许使用if  switch等。
+	// var score = 75;
+	// (score >= 90 && score <= 100 ) ? console.log('1等生') : (score >=80 && score < 90) ? console.log('2等生') : console.log('3等生');
+
+
+//7.(-10)请用一句话遍历变量a，(禁止用for 已知var a = "abc")
+	 // var a = 'abc';
+	 // //#es6下面允许：
+	 // console.log(Array.from(a).join(' '));
+
+	 var s = [];
+	 var len = s.length >> 0;    //可以完善页面性能优化，   【崩溃】
+
+/*8.请在下面写出 javascript面向对象编程的混合式继承，并写出es6版本的继承。
+	要求：汽车是父类，Cruze是子类。  父类有颜色，价格属性，有售卖的方法。Cruze子类实现父类颜色是红色，价格是140000，售卖方法实现输出如下语句：将红色的Cruze卖给了小王价格是14万。
+*/
+	// function Car(color){
+	// 	this.color = color;
+	// }
+	// Car.prototype.sail = function(){
+	// 	console.log(this.color);
+	// }
+	// function BMW(color){
+	// 	Car.call(this,color);
+	// }
+	// var __proto = Object.create(Car.prototype);
+	// __proto.constructor = BMW;
+	// BMW.prototype = __proto;
+	// BMW.prototype.xx = function(params){
+
+	// }
+	// var car = new BMW('red');
+	// car.sail();
+
+	//es6   es6是es5的语法糖
+	class Car{
+		constructor(color){
+			this.color = color;
+		}
+		sail(){
+			console.log(this.color);
+		}
+	}
+	class BMW extends Car{
+		constructor(color){
+			super(color);    
+			// super.qq = 1;   //指bmw，不属于父类
+		}
+	}
+	const bmw = new BMW('yellow');
+	bmw.sail();
+
+//19.请你写出如何利用es6/7优化多异步嵌套的代码？
+	// async  和  await
+	function fetch(url){
+		return new Promise((resolve,reject)=>{
+			fetch(url).then(function(){
+				resolve();
+				reject();
+			})
+		})
+	}
+	/*
+	(async function(){
+		const result = await fetch('1.php');
+	})();
+	*/
+
+	(async function(){
+		a = fetch('1.php');
+		b = fetch('2.php');
+		const resulta = await a;
+		const resultb = await b;
+	})();
+
+//20.[仔细思考]写出如下代码执行结果，并解释为什么？
+
+	var length = 10;
+	function fn(){
+		console.log(this.length);  // 10    2（为什么？）
+	}
+	var yideng = {
+		length:5,
+		method:function(fn){
+			fn();
+			arguments[0]();  //相当于  arguments[0] =arguments.fn         arguments.length 
+		} 
+	};
+	yideng.method(fn,1);
+
+// 解析：跟浏览器有关系    window.length  == 页面上iframe的数量
+// fn被写进了arguments里面了，谁调用 arguemnts,this就指向谁，这里this指向arguemnts，等于参数个数 2
+
+
+
+
+
+	</script>
+</body>
+</html>

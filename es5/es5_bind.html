@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        //bind、call、apply都可以改变this的指向
+
+
+        function locate(){
+            console.log(this.location);
+        }
+        function Maru(location){
+            this.location = location;
+        }
+        var kitty = new Maru("box2");
+        var locateMaru = locate.bind(kitty);   //kitty就是this的改变者
+        locateMaru();
+
+        // locate.apply(kitty);
+
+        // locate.call(kitty);
+
+    </script>
+</body>
+</html>

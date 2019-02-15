@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery内幕</title>
+</head>
+<body>
+	<script type="text/javascript">
+		(function(window,undefined){
+            undefined = 42;
+            alert(undefined);   //42
+
+
+        })(window);
+            undefined = 30;
+            alert(undefined);   //undefined
+
+
+
+	var s = new $('.test');  
+	var q = $('.test');  
+	console.log(s);
+	console.log(q);
+
+
+(function(window,undefined){
+
+	var jQuery = function(){}
+	window.jQuery = window.$ = jQuery;
+
+})(window);
+
+for(var i = 0; i < arr.length; i++){
+
+}
+
+for(var i = 0, length = arr.length; i< length; i++){
+
+}
+
+
+
+
+	</script>
+</body>
+</html>

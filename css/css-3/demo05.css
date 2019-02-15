@@ -1,0 +1,12 @@
+.test05{
+	width: 100px;
+	height: 100px;
+	background: orange;
+	/*以下代码需要自己调试*/
+	-moz-transform:matrix(2.5,-1.5,0.0,1.0,10px,10px);
+	-moz-transform-origin:0% 5%;
+	-webkit-transform:matrix(2.5,-1.5,0.0,1.0,10,10);
+	-moz-transform-origin:0% 5%;
+	-o-transform:matrix(2.5,-1.5,0.0,1.0,10,10);
+	-o-transform-origin:0% 5%)
+}

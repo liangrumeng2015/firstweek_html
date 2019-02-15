@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>矩阵</title>
+	<style type="text/css">
+	
+		.item{
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			position: absolute;
+			top:50px;
+			left: 20px;
+			background: pink;
+			border-radius: 50%;
+		}
+		/*垂直运动*/
+		.wraper{
+			animation: ver-animation 2s linear .5s 2;
+			/*贝塞尔曲线  cubic-bezier(.86,.09,.21,.94)  */
+			animation-timing-function: cubic-bezier(.86,.09,.21,.94);   
+		}
+		.item{
+			animation: hor-animation 2s linear .5s 2;
+		}
+		@keyframes hor-animation{
+			0%{
+				transform: matrix(1, 0, 0, 1, 0, 0);
+			}
+			100%{
+				transform: matrix(1, 0, 0, 1, 400, 0);
+			}
+		}
+		@keyframes ver-animation{
+			0%{
+				transform: matrix(1, 0, 0, 1, 0, 0);
+			}
+			100%{
+				transform: matrix(1, 0, 0, 1, 0, 400);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wraper">
+		<div class="item"></div>
+	</div>
+</body>
+</html>

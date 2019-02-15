@@ -1,0 +1,21 @@
+.test02{
+	width: 310px;
+	height: 310px;
+	background: pink;
+	margin:80px; 
+	overflow: hidden;
+	transform: rotate(45deg);
+}
+.test02>img{
+	transform: rotate(-45deg) scale(1.42);   
+}*/            /* 1.42是通过计算出来的 */
+
+
+
+	/*img{
+		clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%);  /*左上角为基准点*/
+		/*transition: 2s clip-path;
+	}*/
+	/*img:hover{
+		clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+	}*/
